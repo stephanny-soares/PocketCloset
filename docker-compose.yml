@@ -11,7 +11,7 @@ services:
   frontend:
     build: ./frontend         # Dockerfile - Dev Frontend
     ports:
-      - "80:80"
+      - "8081:8081"   # debe coincidir con el puerto del contenedor
     depends_on:
       - backend
 
