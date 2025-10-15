@@ -58,34 +58,58 @@ El MVP mostrará cómo un usuario puede:
 **Control de Versiones:** GitHub
 
 ---
+## Estructura del Proyecto
+
+```bash
+PocketCloset/
+├── backend/      # API Node.js (Express)
+│   └── .env.example  # Variables de entorno del backend
+├── frontend/     # App React Native / Expo
+├── docker-compose.yml
+└── README.md
+```
+---
+
+## Ejecución con Docker
+
+Asegúrate de tener **Docker y Docker Compose** instalados.
+
+```bash
+# Clonar el repositorio
+git clone git@github.com:stephanny-soares/PocketCloset.git
+cd PocketCloset
+
+# Construir y ejecutar los contenedores
+docker-compose up --build
+```
+---
 
 ## Configuración
 
-1. Clonar el repositorio:
-
+### Opción 1 – Vía Docker (recomendada)
 ```bash
-git clone git@github.com:stephanny-soares/PocketCloset.git
-cd temp/backend
+1. Clonar el repositorio  
+2. Ejecutar `docker-compose up --build`  
+3. Acceder al frontend y backend desde las URLs locales.
 ```
 
-2. Instalar dependencias:
+### Opción 2 – Manual (modo desarrollo)
+
+#### Backend
 
 ```bash
+cd backend
 npm install
-```
-
-3. Ejecutar servidor:
-
-```bash
 npm run dev
+
+# Servidor disponible en http://localhost:8082
 ```
 
-4. Servidor disponible en: `http://localhost:3000/`
-
-Frontend:
+#### Frontend
 
 ```bash
 cd ../frontend
+npm install
 expo start
 ```
 
@@ -96,5 +120,15 @@ expo start
 **Fase 1 – MVP:** Closet Virtual, Planner de Outfits, Modo Viaje
 **Fase 2 – Optimización:** Calendario de estilo, alertas climáticas, historial de uso
 **Fase 3 – Expansión IA:** Asistente conversacional, recomendaciones automáticas, estilo personalizado
+
+
+## Estado actual
+- Frontend y backend inicializados con configuración mínima (Docker OK)
+
+---
+
+## Documentación Técnica
+
+- [🌍 Ambientes de Desarrollo](./docs/Ambientes_de_Desarrollo.md)
 
 ---
