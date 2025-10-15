@@ -4,24 +4,26 @@ services:
   backend:
     build: ./backend          # Dockerfile - Dev Backend
     ports:
-      - "3000:3000"
+      - "${BACKEND_PORT}:3000"  # Puerto del backend mapeado con variable
     depends_on:
       - db
+    env_file:
+      - .env                    # Lee variables de backend si hace falta  
 
   frontend:
     build: ./frontend         # Dockerfile - Dev Frontend
     ports:
-      - "8081:8081"   # debe coincidir con el puerto del contenedor
+      - "${FRONTEND_PORT}:8081"   # Puerto del frontend mapeado con variable
     depends_on:
       - backend
 
   db:
     image: mysql:8
     environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: pocketcloset_db
-      MYSQL_USER: pocket_user
-      MYSQL_PASSWORD: pocket_pass123
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
