@@ -13,11 +13,7 @@ services:
   frontend:
     build: ./frontend         # Dockerfile - Dev Frontend
     ports:
-<<<<<<< Updated upstream
-      - "8081:8081"   # debe coincidir con el puerto del contenedor
-=======
       - "${FRONTEND_PORT}:8081"   # Puerto del frontend mapeado con variable
->>>>>>> Stashed changes
     depends_on:
       - backend
 
