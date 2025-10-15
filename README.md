@@ -70,7 +70,7 @@ PocketCloset/
 ```
 ---
 
-## ⚙️ Ejecución con Docker
+## Ejecución con Docker
 
 Asegúrate de tener **Docker y Docker Compose** instalados.
 
@@ -124,5 +124,11 @@ expo start
 
 ## Estado actual
 - Frontend y backend inicializados con configuración mínima (Docker OK)
+
+---
+
+## Documentación Técnica
+
+- [🌍 Ambientes de Desarrollo](./docs/Ambientes_de_Desarrollo.md)
 
 ---
