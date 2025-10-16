@@ -80,20 +80,22 @@ Cada registro representa un usuario único dentro del sistema, identificado por 
 
 ## Buenas prácticas técnicas
 
-Utilizar UUID v4 para id (evita conflictos en sistemas distribuidos).
-Mantener los timestamps en formato UTC.
-Seguir convención de nombres en snake_case (por ejemplo, ultimo_login).
-Crear un índice único para el campo email.
-Usar algoritmos de cifrado fuerte para password_hash (bcrypt o argon2).
-Incluir auditoría futura para login y actualización de contraseña.
+- Utilizar UUID v4 para id (evita conflictos en sistemas distribuidos).
+- Mantener los timestamps en formato UTC.
+- Seguir convención de nombres en snake_case (por ejemplo, ultimo_login).
+- Crear un índice único para el campo email.
+- Usar algoritmos de cifrado fuerte para password_hash (bcrypt o argon2).
+- Incluir auditoría futura para login y actualización de contraseña.
 
 ---
-## Historial de cambios
 
-Fecha	Responsable	Descripción
-16/10/2025	Stephanny	Creación inicial del modelo conceptual
-(futuro)	Equipo Backend	Adición de relación con roles
-(futuro)	DBA	Implementación en la base de datos PostgreSQL
+## Histórico de Tarefas
+
+| Fecha       | Responsable      | Descripción                                      |
+|------------|-----------------|------------------------------------------------|
+| 16/10/2025 | Stephanny        | Creación inicial del modelo conceptual         |
+| (futuro)   | Equipo Backend   | Adición de relación con roles                  |
+| (futuro)   | DBA              | Implementación en la base de datos PostgreSQL |
 
 
 Versión y estado
