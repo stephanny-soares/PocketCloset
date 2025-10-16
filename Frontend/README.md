@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-PocketCloset Frontend
 
 Proyecto base del frontend de la aplicación PocketCloset, creado con React Native (Expo) y JavaScript.
 Este proyecto define la estructura inicial del frontend, incluye una página Home funcional y está completamente dockerizado para facilitar su ejecución y despliegue.
@@ -83,25 +81,25 @@ Web is waiting on http://localhost:8081
 Abre esa URL en tu navegador para ver la pantalla Home de PocketCloset 
 
 6 Dockerfile
-# Imagen base ligera con Node.js
+. Imagen base ligera con Node.js
 FROM node:20-alpine
 
-# Crear carpeta de trabajo
+. Crear carpeta de trabajo
 WORKDIR /app
 
-# Copiar dependencias
+. Copiar dependencias
 COPY package*.json ./
 
-# Instalar dependencias y Expo CLI
+. Instalar dependencias y Expo CLI
 RUN npm install -g expo-cli && npm install
 
-# Copiar el resto del código fuente
+. Copiar el resto del código fuente
 COPY . .
 
-# Exponer el puerto que usa Expo Web
+. Exponer el puerto que usa Expo Web
 EXPOSE 8081
 
-# Comando por defecto: iniciar Expo en modo web
+. Comando por defecto: iniciar Expo en modo web
 CMD ["npx", "expo", "start", "--web"]
 
 7 .dockerignore
@@ -117,11 +115,9 @@ npm-debug.log
 
 7 Criterios de Finalización
 
-. Proyecto frontend inicializado correctamente.
-. Página Home creada y renderizando.
-. Estructura base: /src, /components, /pages.
-. Dockerfile funcional, con la app corriendo en http://localhost:8081.
+. Proyecto frontend inicializado correctamente
+. Página Home creada y renderizando
+. Estructura base: /src, /components, /pages
+. Dockerfile funcional, con la app corriendo en http://localhost:8081
 
-=======
 
->>>>>>> 0b663b7d45f67a037c9cafc246da3cfa2100c03e
