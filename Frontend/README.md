@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 PocketCloset Frontend
 
 Proyecto base del frontend de la aplicación PocketCloset, creado con React Native (Expo) y JavaScript.
@@ -121,3 +122,6 @@ npm-debug.log
 . Estructura base: /src, /components, /pages.
 . Dockerfile funcional, con la app corriendo en http://localhost:8081.
 
+=======
+
+>>>>>>> 0b663b7d45f67a037c9cafc246da3cfa2100c03e
