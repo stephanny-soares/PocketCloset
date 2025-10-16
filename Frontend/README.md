@@ -14,6 +14,7 @@ Estructura de carpetas base (/src, /components, /pages).
 Configuración de Docker funcional para levantar el entorno Expo.
 
 2 Estructura del Proyecto
+``` bash
 Frontend/
 ├── app/
 │   └── index.js
@@ -29,7 +30,7 @@ Frontend/
 ├── package.json
 ├── package-lock.json
 ├── README.md
-
+````
 3 Tecnologías Utilizadas
 
 React Native + Expo :	Framework y entorno para desarrollo multiplataforma.
