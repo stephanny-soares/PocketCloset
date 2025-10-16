@@ -7,6 +7,7 @@ export default function Home() {
     <View style={styles.container}>
       <Header title="PocketCloset" />
       <Text style={styles.subtitle}>Bienvenido a tu armario digital 👗👕</Text>
+      <Text>{process.env.EXPO_PUBLIC_APP_NAME}</Text>
     </View>
   );
 }
