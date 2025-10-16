@@ -30,7 +30,7 @@ Frontend/
 ├── package.json
 ├── package-lock.json
 ├── README.md
-````
+```
 3 Tecnologías Utilizadas
 
 React Native + Expo :	Framework y entorno para desarrollo multiplataforma.
