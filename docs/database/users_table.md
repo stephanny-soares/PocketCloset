@@ -2,7 +2,7 @@
 # Tabla: users
 **Estado:** Conceptual  
 **Responsable:** Equipo Backend  
-**Última actualización:** 16/10/2025  
+**Última actualización:** 18/10/2025  
 **Origen del requisito:** Épica 2 – Registro de Usuario  
 
 ---
@@ -100,7 +100,7 @@ Cada registro representa un usuario único dentro del sistema, identificado por 
 | 16/10/2025 | Stephanny        | Creación inicial del modelo conceptual         |
 | (futuro)   | Equipo Backend   | Adición de relación con roles                  |
 | (futuro)   | DBA              | Implementación en la base de datos PostgreSQL |
->>>>>>> docs/regras-e-padroes
+> docs/regras-e-padroes
 
 
 Versión y estado
