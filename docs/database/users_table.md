@@ -17,19 +17,23 @@ Cada registro representa un usuario único dentro del sistema, identificado por 
 
 ## Estructura de campos
 
-| Campo          | Tipo (conceptual) | Restricciones    | Descripción                                      | Ejemplo                                                                                          |
-|----------------|------------------|------------------|--------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| id             | UUID             | PK               | Identificador único del usuario                  | b7f9d2b0-34c1-4dcf-b1f4-930ec88a9f60                                                             |
-| nombre         | string (varchar) | NOT NULL         | Nombre completo del usuario                      | María Santos                                                                                     |
-| email          | string (varchar) | UNIQUE, NOT NULL | Correo electrónico utilizado para el acceso      | maria@email.com                                                                                  |
-| password_hash  | string (varchar) | NOT NULL         | Contraseña cifrada (bcrypt u otro algoritmo seguro) | $2b$10$...                                                                                       |
-| avatar_url     | string (varchar) | NULLABLE         | URL de la imagen de perfil del usuario           | https://cdn.pocketcloset.com/avatars/maria.png                                                   |
-| idioma         | string (varchar) | DEFAULT 'es'     | Idioma preferido de la interfaz (ISO 639-1)      | es                                                                                               |
-| pais           | string (varchar) | NULLABLE         | País de residencia del usuario (ISO 3166-1 alpha-2) | ES                                                                                               |
-| activo         | boolean          | DEFAULT true     | Indica si la cuenta está activa                  | true                                                                                             |
-| creado_en      | datetime         | DEFAULT now()    | Fecha/hora de creación del registro (UTC)        | 2025-10-16T18:45:00Z                                                                             |
-| actualizado_en | datetime         | DEFAULT now()    | Actualizado automáticamente en cada modificación (UTC) | 2025-10-16T18:45:00Z                                                                          |
-| ultimo_login   | datetime         | NULLABLE         | Último acceso del usuario (UTC)                  | 2025-10-20T08:30:00Z                                                                             |
+| Campo                           | Tipo de Dato   | Obligatorio | Predeterminado / Restricción             | Descripción                                      | Ejemplo                                          |
+| ------------------------------- | -------------- | ----------- | ---------------------------------------- | ---------------------------------------------- | ------------------------------------------------ |
+| **id**                          | `UUID`         | ✅           | `PRIMARY KEY, DEFAULT gen_random_uuid()` | Identificador único del usuario                 | `b7f9d2b0-34c1-4dcf-b1f4-930ec88a9f60`           |
+| **nombre / name**               | `VARCHAR(100)` | ✅           | —                                        | Nombre completo o apodo del usuario            | `María Santos`                                   |
+| **email**                       | `VARCHAR(150)` | ✅           | `UNIQUE`                                 | Correo de acceso y recuperación de contraseña  | `maria@email.com`                                |
+| **password_hash**               | `VARCHAR(255)` | ✅           | —                                        | Contraseña cifrada (bcrypt, argon2, etc.)      | `$2b$10$...`                                     |
+| **activo**                      | `BOOLEAN`      | ✅           | `DEFAULT true`                           | Indica si la cuenta está activa                | `true`                                           |
+| **idioma / language**           | `VARCHAR(5)`   | ❌           | `DEFAULT 'es'`                           | Idioma preferido de la interfaz (ISO 639-1)   | `es`                                             |
+| **avatar_url**                  | `VARCHAR(255)` | ❌           | `NULLABLE`                               | URL de la imagen de perfil del usuario        | `https://cdn.pocketcloset.com/avatars/maria.png` |
+| **pais / location**             | `VARCHAR(50)`  | ❌           | `NULLABLE`                               | País o ciudad del usuario (ISO 3166-1 alpha-2)| `ES` / `Madrid`                                  |
+| **fecha / age**                 | `INT`          | ❌           | `NULLABLE`                               | Edad del usuario                               | `29`                                             |
+| **gender**                      | `VARCHAR(20)`  | ❌           | `NULLABLE`                               | Género u opción neutra                          | `Femenino` / `Masculino` / `Otro`               |
+| **social_provider**             | `VARCHAR(50)`  | ❌           | `NULLABLE`                               | Origen del inicio de sesión (Google, Apple, etc.) | `google`                                         |
+| **ultimo_login**                | `TIMESTAMP`    | ❌           | `NULLABLE`                               | Último acceso del usuario (UTC)                | `2025-10-20T08:30:00Z`                           |
+| **created_at / creado_en**      | `TIMESTAMP`    | ✅           | `DEFAULT now()`                          | Fecha/hora de creación del registro (UTC)      | `2025-10-16T18:45:00Z`                           |
+| **updated_at / actualizado_en** | `TIMESTAMP`    | ✅           | `DEFAULT now()`                          | Última actualización del registro (UTC)        | `2025-10-16T18:45:00Z`                           |
+
 
 ---
 
