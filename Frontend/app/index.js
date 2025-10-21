@@ -1,5 +1,5 @@
-import Home from '../src/pages/Home';
+import RegisterScreen from '../src/pages/RegistrerScreen';
 
 export default function Index() {
-  return <Home />;
+  return <RegisterScreen />;
 }
