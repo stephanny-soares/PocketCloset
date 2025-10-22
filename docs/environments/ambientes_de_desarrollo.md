@@ -1,3 +1,4 @@
+
 # Ambientes de Desarrollo - PocketCloset
 
 Este documento describe los **entornos de desarrollo** del proyecto **PocketCloset**, incluyendo frontend, backend y base de datos.  
