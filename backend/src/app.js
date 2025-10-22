@@ -16,6 +16,11 @@ app.use(cors({
 // Protege el backend de ataques comunes (XSS, clickjacking, etc.)
 app.use(helmet());
 
+// Middlewares de logging
+const requestLogger = require('./middlewares/requestLogger');
+const errorHandler = require('./middlewares/errorHandler');
+app.use(requestLogger);
+
 // Rutas principales
 const registerRoute = require('./routes/register');
 const usersRoutes = require('./routes/users');
@@ -26,5 +31,8 @@ app.use('/api/users', usersRoutes);
 // Rutas de prueba (modulares)
 const utilsRoutes = require('./routes/utils');
 app.use('/', utilsRoutes);
+
+// Middleware de manejo de errores (último siempre)
+app.use(errorHandler);
 
 module.exports = app;
