@@ -2,6 +2,8 @@ require('dotenv').config(); // Carga variables de .env
 const express = require('express');
 const cors = require('cors'); // importar CORS
 const app = express();
+const helmet = require('helmet');
+
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -10,6 +12,9 @@ app.use(express.json());
 app.use(cors({
   origin: '*' // 🔹 para desarrollo, luego se puede restringir
 }));
+
+// Protege el backend de ataques comunes (XSS, clickjacking, etc.)
+app.use(helmet());
 
 // Rutas principales
 const registerRoute = require('./routes/register');
