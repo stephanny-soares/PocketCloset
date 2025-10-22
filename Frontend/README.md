@@ -1,50 +1,124 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Proyecto base del frontend de la aplicación PocketCloset, creado con React Native (Expo) y JavaScript.
+Este proyecto define la estructura inicial del frontend, incluye una página Home funcional y está completamente dockerizado para facilitar su ejecución y despliegue.
 
-## Get started
+1 Descripción
 
-1. Install dependencies
+Este frontend es la base del proyecto PocketCloset, una aplicación enfocada en la gestión digital de prendas y armarios.
+El trabajo consiste en inicializar el entorno frontend con:
 
-   ```bash
-   npm install
-   ```
+Página Home renderizando correctamente.
 
-2. Start the app
+Estructura de carpetas base (/src, /components, /pages).
 
-   ```bash
-   npx expo start
-   ```
+Configuración de Docker funcional para levantar el entorno Expo.
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+2 Estructura del Proyecto
+``` bash
+Frontend/
+├── app/
+│   └── index.js
+├── src/
+│   ├── components/
+│   │   └── Header.js
+│   └── pages/
+│       └── Home.js
+├── .dockerignore
+├── .gitignore
+├── app.json
+├── Dockerfile
+├── package.json
+├── package-lock.json
+├── README.md
 ```
+3 Tecnologías Utilizadas
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+React Native + Expo :	Framework y entorno para desarrollo multiplataforma.
+JavaScript (ES6) :	Lenguaje principal del proyecto.
+Node.js 20 (Alpine) :	Imagen base del contenedor Docker.
+Docker :	Para la ejecución y despliegue en contenedores.
 
-## Learn more
+4 Instalación Local (sin Docker)
 
-To learn more about developing your project with Expo, look at the following resources:
+Si deseas ejecutar el proyecto directamente en tu máquina:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Clona el repositorio:
 
-## Join the community
+git clone https://github.com/tu-usuario/PocketCloset-Frontend.git
+cd PocketCloset-Frontend
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Instala dependencias:
+
+npm install
+
+
+Inicia el proyecto con Expo:
+
+npx expo start --web
+
+
+Abre el navegador y ve a:
+👉 http://localhost:8081
+
+5 Ejecución con Docker
+
+5.1 Crear la imagen Docker
+
+Desde la raíz del proyecto (Frontend/):
+
+docker build -t pocketcloset-frontend .
+
+5.2 Ejecutar el contenedor
+docker run -it --rm -p 8081:8081 pocketcloset-frontend
+
+5.3 Abrir la app
+
+Una vez corra el contenedor, Expo mostrará:
+
+Web is waiting on http://localhost:8081
+
+
+Abre esa URL en tu navegador para ver la pantalla Home de PocketCloset 
+
+6 Dockerfile
+. Imagen base ligera con Node.js
+FROM node:20-alpine
+
+. Crear carpeta de trabajo
+WORKDIR /app
+
+. Copiar dependencias
+COPY package*.json ./
+
+. Instalar dependencias y Expo CLI
+RUN npm install -g expo-cli && npm install
+
+. Copiar el resto del código fuente
+COPY . .
+
+. Exponer el puerto que usa Expo Web
+EXPOSE 8081
+
+. Comando por defecto: iniciar Expo en modo web
+CMD ["npx", "expo", "start", "--web"]
+
+7 .dockerignore
+
+Evita copiar archivos innecesarios al contenedor:
+
+node_modules
+.expo
+.git
+.vscode
+.DS_Store
+npm-debug.log
+
+7 Criterios de Finalización
+
+. Proyecto frontend inicializado correctamente
+. Página Home creada y renderizando
+. Estructura base: /src, /components, /pages
+. Dockerfile funcional, con la app corriendo en http://localhost:8081
+
+
