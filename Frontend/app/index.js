@@ -1,5 +1,2 @@
-import RegisterScreen from '../src/pages/RegistrerScreen';
 
-export default function Index() {
-  return <RegisterScreen />;
-}
+export { default } from '../src/pages/LoginScreen';

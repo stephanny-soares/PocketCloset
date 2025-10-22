@@ -180,6 +180,8 @@ const RegisterScreen = () => {
         setErrors({});
         setPasswordStrength({ label: '', color: '' });
         setRecaptchaToken(null);
+        // Redirige a Home
+              router.replace('/home');
       } else if (res.status === 409) {
         setErrors({ email: 'El correo electrónico ya está registrado.' });
       } else if (res.status === 400) {
