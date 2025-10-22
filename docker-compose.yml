@@ -1,4 +1,4 @@
-version: '3.9'
+
 
 services:
   backend:
@@ -6,9 +6,12 @@ services:
     ports:
       - "${BACKEND_PORT}:3000"  # Puerto del backend mapeado con variable
     depends_on:
-      - db
+      db:
+        condition: service_healthy  # Espera a que MySQL esté "healthy" antes de iniciar
     env_file:
-      - .env                    # Lee variables de backend si hace falta  
+      - .env                    # Lee variables de backend si hace falta 
+    restart: always              # Reinicia automáticamente si falla
+ 
 
   frontend:
     build: ./frontend         # Dockerfile - Dev Frontend
@@ -28,6 +31,12 @@ services:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
+    healthcheck:                 # Comprueba que MySQL esté listo antes de levantar el backend
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
 
 volumes:
   db-data:
