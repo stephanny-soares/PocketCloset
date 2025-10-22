@@ -25,8 +25,9 @@ import CustomInput from '../components/CustomInput';
 import PasswordInput from '../components/PasswordInput';
 import PrimaryButton from '../components/PrimaryButton';
 import { isValidEmail, isValidPassword, isValidDate } from '../utils/validation'; // Reglas de validación
+import CheckBox from '../components/CheckBox';
 
-/* Implantar cuando se conecte con el Backend
+/* Implementar cuando se conecte con el Backend
 // Importamos el componente reCAPTCHA de Expo
 import { GoogleReCaptcha } from 'expo-google-recaptcha';
 */
@@ -61,7 +62,7 @@ const RegisterScreen = () => {
   // Estado para fuerza de contraseña
   const [passwordStrength, setPasswordStrength] = useState({ label: '', color: '' });
 
-  /* Implantar cuando se conecte con el Backend
+  /* Implementar cuando se conecte con el Backend
   // Referencia y token del Captcha
   const recaptchaRef = useRef();
   const [recaptchaToken, setRecaptchaToken] = useState(null);
@@ -124,7 +125,7 @@ const RegisterScreen = () => {
     if (!form.terms)
       e.terms = 'Debes aceptar Términos y Condiciones y la Política de Privacidad.';
 
-    /* Implantar cuando se conecte con el Backend
+    /* Implementar cuando se conecte con el Backend
     // Verificación de Captcha (anti-bot)
     if (!recaptchaToken)
       e.captcha = 'Por favor, verifica que no eres un robot.';
@@ -152,7 +153,7 @@ const RegisterScreen = () => {
         email: form.email.trim().toLowerCase(),
         password: form.password,
         birthDate: form.birthDate?.trim() || null,
-        /* Implantar cuando se conecte con el Backend
+        /* Implementar cuando se conecte con el Backend
         recaptchaToken, 
         */
       };
@@ -272,21 +273,47 @@ const RegisterScreen = () => {
               error={errors.birthDate}
             />
 
-            {/* Checkbox: Términos y Condiciones */}
+            {/* Bloque de aceptación de términos */}
             <TouchableOpacity
-              onPress={() => setField('terms', !form.terms)}
-              style={styles.termsRow}
+              style={styles.termsContainer}
               activeOpacity={0.8}
+              onPress={() => setField('terms', !form.terms)} // 👈 Usa el campo 'terms' dentro del estado form
             >
-              <View style={[styles.checkbox, form.terms && styles.checkboxChecked]} />
-              <Text style={styles.termsText}>
-                Acepto los <Text style={styles.link}>Términos y Condiciones</Text> y la{' '}
-                <Text style={styles.link}>Política de Privacidad</Text>
+              {/* Checkbox controlado */}
+              <CheckBox
+                value={form.terms}
+                onValueChange={(v) => setField('terms', v)}
+                tintColors={{ true: colors.primary, false: colors.textMuted }}
+             />
+              {/* Texto con enlaces clicables */}
+             <Text style={styles.termsText}>
+                Acepto los{' '}
+               <Text
+                 style={styles.link}
+                 onPress={(e) => {
+                  e.stopPropagation(); // evita marcar el checkbox al hacer clic en el link
+                 console.log('➡️ Navegar a Términos y Condiciones');
+                 // 🔜 Aquí luego implementaremos navigation.navigate('Terminos')
+                 }}
+               >
+                Términos y Condiciones
+               </Text>{' '}
+                 y la{' '}
+               <Text
+                style={styles.link}
+                onPress={(e) => {
+                e.stopPropagation(); // evita marcar el checkbox al hacer clic en el link
+                console.log('➡️ Navegar a Política de Privacidad');
+                // 🔜 Aquí luego implementaremos navigation.navigate('PoliticaPrivacidad')
+                }}
+               >  
+                Política de Privacidad
               </Text>
-            </TouchableOpacity>
+             </Text> 
+           </TouchableOpacity>
             {!!errors.terms && <Text style={styles.error}>{errors.terms}</Text>}
 
-            {/* Implantar cuando se conecte con el Backend
+            {/* Implementar cuando se conecte con el Backend
             Captcha anti-bot
             <View style={{ marginTop: 10, marginBottom: 10, alignItems: 'center' }}>
               <GoogleReCaptcha
